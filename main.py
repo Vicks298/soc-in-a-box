@@ -1,6 +1,7 @@
 from datetime import datetime
 import re
 
+from reports.incident_report import generate_incident_report
 from dfir.timeline import build_timeline
 from detections.brute_force import detect as detect_bruteforce
 from detections.successful_login import detect as detect_login
@@ -62,6 +63,15 @@ for incident in incidents:
 
     for e in incident["timeline"]:
         print(f"[{e['timestamp']}] {e['type']}")
+
+for incident in incidents:
+    report = generate_incident_report(incident)
+
+    print("\n📄 INCIDENT REPORT 📄")
+    print(f"Incident ID: {report['incident_id']}")
+    print(f"Generated At: {report['generated_at']}")
+    print(f"Severity: {report['severity']}")
+    print(f"Summary: {report['executive_summary']}")
 
 
 
