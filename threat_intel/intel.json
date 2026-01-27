@@ -1,0 +1,11 @@
+{
+  "indicators": [
+    {
+      "type": "ip",
+      "value": "185.220.101.1",
+      "confidence": "high",
+      "source": "AbuseIPDB",
+      "description": "Known brute-force and C2 infrastructure"
+    }
+  ]
+}
