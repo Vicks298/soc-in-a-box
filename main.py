@@ -1,6 +1,7 @@
 from datetime import datetime
 import re
 
+from dfir.timeline import build_timeline
 from detections.brute_force import detect as detect_bruteforce
 from detections.successful_login import detect as detect_login
 from detections.web_access import detect as detect_web
@@ -50,12 +51,17 @@ if __name__ == "__main__":
 
     correlated_alerts = correlate(alerts)
 
-    for alert in correlated_alerts:
-        print("\n🚨 CORRELATED ALERT 🚨")
-        print(f"Source IP : {alert['source_ip']}")
-        print(f"Attack   : {alert['attack']}")
-        print(f"Severity : {alert['severity']}")
-        print(f"MITRE    : {alert['mitre']['technique_id']} - {alert['mitre']['technique']}")
+    incidents = build_timeline(correlated_alerts)
+
+for incident in incidents:
+    print("\n🧠 INCIDENT TIMELINE 🧠")
+    print(f"Source IP: {incident['source_ip']}")
+    print(f"Attack: {incident['attack']}")
+    print(f"Severity: {incident['severity']}")
+    print(f"MITRE: {incident['mitre']['technique_id']} - {incident['mitre']['technique']}")
+
+    for e in incident["timeline"]:
+        print(f"[{e['timestamp']}] {e['type']}")
 
 
 
