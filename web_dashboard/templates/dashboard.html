@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SOC-in-a-Box Dashboard</title>
+    <style>
+        body { font-family: Arial; background: #0f172a; color: #e5e7eb; padding: 20px; }
+        h1 { color: #38bdf8; }
+        .card { background: #1e293b; padding: 15px; margin: 10px 0; border-radius: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 8px; border-bottom: 1px solid #334155; }
+        th { text-align: left; }
+    </style>
+</head>
+<body>
+
+<h1>🛡️ SOC-in-a-Box Dashboard</h1>
+
+<div class="grid">
+    <div class="card">
+        <h3>Total Cases</h3>
+        <p>{{ total }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Status</h3>
+        {% for k, v in status.items() %}
+            <p>{{ k }}: {{ v }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="card">
+        <h3>Severity</h3>
+        {% for k, v in severity.items() %}
+            <p>{{ k }}: {{ v }}</p>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="card">
+    <h3>Latest Incidents</h3>
+    <table>
+        <tr>
+            <th>Case ID</th>
+            <th>Severity</th>
+            <th>Status</th>
+            <th>Created</th>
+        </tr>
+        {% for case in cases %}
+        <tr>
+            <td>{{ case.case_id }}</td>
+            <td>{{ case.severity }}</td>
+            <td>{{ case.status }}</td>
+            <td>{{ case.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

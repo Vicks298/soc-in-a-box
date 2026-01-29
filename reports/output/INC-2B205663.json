@@ -1,0 +1,36 @@
+{
+  "incident_id": "INC-2B205663",
+  "generated_at": "2026-01-28T11:43:37.624485Z",
+  "source_ip": "185.220.101.1",
+  "attack": "Successful Login After Brute Force",
+  "severity": "HIGH",
+  "mitre": {
+    "tactic": "Initial Access",
+    "technique": "Valid Accounts",
+    "technique_id": "T1078"
+  },
+  "executive_summary": "A HIGH severity security incident was detected originating from 185.220.101.1 involving Successful Login After Brute Force.",
+  "timeline": [
+    {
+      "timestamp": "1900-01-12T08:10:01",
+      "activity": "SSH Brute Force"
+    },
+    {
+      "timestamp": "1900-01-12T08:10:15",
+      "activity": "SSH Brute Force"
+    },
+    {
+      "timestamp": "1900-01-12T08:10:32",
+      "activity": "Successful Login"
+    },
+    {
+      "timestamp": "1900-01-12T08:12:10",
+      "activity": "Suspicious Web Access"
+    },
+    {
+      "timestamp": "1900-01-12T08:12:45",
+      "activity": "Suspicious Web Access"
+    }
+  ],
+  "recommendation": "Review affected systems, reset compromised credentials, and block malicious IP addresses."
+}
